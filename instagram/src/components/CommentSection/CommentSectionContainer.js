@@ -9,7 +9,7 @@ class CommentSection extends React.Component {
         this.state = {
             comments: props.comments,
             comment: '',
-            likes: 0
+            likes: props.likes
         };
     }
 
@@ -22,8 +22,7 @@ class CommentSection extends React.Component {
 
     commentChange = e => this.setState({ [e.target.name]: e.target.value })
     
-    //addLike = e => this.setState({ this.state.likes: likes + 1 })
-    addLike = e => {
+    addLike = () => {
         this.setState(prevState => ({ likes: prevState.likes + 1 }))
     }
 
