@@ -13,3 +13,7 @@ font-size: 14px;
 font-weight: 500;
 font-size: 12px;
 }
+
+.likes {
+    text-align: start;
+}
