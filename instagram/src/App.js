@@ -1,45 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import dummyData from './dummy-data';
-import PostsContainer from './components/PostsContainer/PostsContainer';
-import SearchBar from './components/SearchBar/SearchBarContainer';
+import PostsPage from './components/PostsContainer/PostsPage';
+import authenticate from './components/Authentication/Authenticate';
+import Login from './components/Login/Login';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      posts: [],
-      search: ''
-    };
-  }
-
-  filterPost = e => {
-    e.preventDefault();
-    const posts = this.state.posts.slice();
-    const filteredPosts = posts.filter(post => post.username === this.state.search);
-    this.setState({ posts: filteredPosts, search: '' });
-  }
-
-  searchChange = e => this.setState({ [e.target.name]: e.target.value })
-
-  componentDidMount() {
-    this.setState({ posts: dummyData });
-  }
-
   
   render() {
     return (
       <div className="App">
-        <SearchBar
-        value={this.state.search}
-        handleFilterPost={this.filterPost}
-        handleSearchChange={this.searchChange}
-        />
-        
-        <PostsContainer posts={this.state.posts} />
+        <PostsPage />
       </div>
     );
   }
 }
 
-export default App;
+const WrappedApp = authenticate(App, Login);
+
+export default WrappedApp;

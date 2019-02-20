@@ -2,7 +2,14 @@ import React from 'react';
 import IGLogo from '../../assets/iglogo.png';
 import './SearchBar.css';
 
+const logout2 = e => {
+    localStorage.clear();
+    window.location.reload();
+}
+
 const SearchBar = props => {
+
+
     return (
         <div className="search-bar-wrapper">
             <div className="image-wrapper">
@@ -21,6 +28,10 @@ const SearchBar = props => {
                     type="submit"
                 />                
             </form>
+
+            <div>
+                <button onClick={logout2}>Log Out</button>
+            </div>
 
             <div className="social-wrapper">
                 <div className="social">

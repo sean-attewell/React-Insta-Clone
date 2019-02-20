@@ -16,7 +16,7 @@ class CommentSection extends React.Component {
     addNewComment = (e, i) => {
         e.preventDefault();
         const comments = this.state.comments.slice();
-        comments.push({ username: "FakeUser123", text: this.state.comment });
+        comments.push({ username: localStorage.getItem('userName'), text: this.state.comment });
         this.setState({ comments, comment: '' });
     }
 

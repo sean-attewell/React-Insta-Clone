@@ -27,7 +27,7 @@
 - Building the High Order Component
 
   - Create a directory called `authentication`
-  - Inside that directory create a HOC called `authenticate`. This is where all of the magic sis going to happen.
+  - Inside that directory create a HOC called `authenticate`. This is where all of the magic is going to happen.
   - This component should be able to take in a component as an argument, and it will return a `class` component.
   - Inside of `authenticate's` render method, you'll want to return the Component that gets passed into it.
   - Be sure to export out this component.
@@ -53,6 +53,8 @@ const authenticate = App =>
   - Be sure to force the page to reload when a user logs in so that our component un-mounts and mounts again.
 
 - Extending the functionality of the HOC to conditionally render the `LoginPage` or the `App`
+
+### We will use the "Connor Technique" instead, for injecting a form component... or we will simply implement the login form inside the HOC itself
 
   - First, we need to change our `authenticate` HOC to return a second function that will take in a second component (which will be the `LoginPage`). This will look like a "double arrow" function - `const authenticate = App => LoginPage => {}`.
   - In `App.js`, the component that is exported is the class component that our HOC returns. So invoke the HOC function twice (which is called currying) on the export line. The first time it's invoked, pass in `App`. The second time, pass in `LoginPage` (which you'll need to import here). ie - `export default higherOrderComp(FirstComponent)(SecondComponent)`
