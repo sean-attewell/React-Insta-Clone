@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import StyledUsername from '../Styles/Reusables'
 
 const PostHeaderWrapper = styled.div`
     display: flex;
     align-items: center;
     padding: 1.5%;
-    div:last-child {
+    /* div:last-child {
         margin-left: 2%;
         font-weight: bold;
-    }
+    } */
 `;
+
+const BigStyledUsername = styled(StyledUsername)`
+    font-size: 16px;
+`
 
 const ThumbWrapper = styled.div`
     height: 75px;
@@ -30,7 +35,7 @@ const PostHeader = props => {
                     src={props.thumbnailUrl}
                 />
             </ThumbWrapper>
-            <div>{props.username}</div>
+            <BigStyledUsername>{props.username}</BigStyledUsername>
         </PostHeaderWrapper>
     );
 };
