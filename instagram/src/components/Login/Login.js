@@ -10,11 +10,9 @@ class Login extends React.Component {
         };
     }
 
-    logIn = () => {
-        localStorage.setItem('userName', this.state.userName);
-        this.setState({ userName: '' });
-        localStorage.setItem('password', this.state.password);
-        this.setState({ password: '' });
+    handleLogIn = e => {
+        e.preventDefault();
+        this.props.login(this.state.userName, this.state.password)
     }
 
     onUserNameChange = e => this.setState({ userName: e.target.value })
@@ -23,7 +21,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.logIn} >
+            <form onSubmit={this.handleLogIn} >
                 <input
                     onChange={this.onUserNameChange}
                     type="text"

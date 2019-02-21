@@ -34,6 +34,7 @@ class PostsPage extends Component {
                     value={this.state.search}
                     handleFilterPost={this.filterPost}
                     handleSearchChange={this.searchChange}
+                    logout={this.props.logout}
                 />
 
                 <PostsContainer posts={this.state.posts} />

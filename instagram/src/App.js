@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PostsPage />
+        <PostsPage logout={this.props.logout} />
       </div>
     );
   }
