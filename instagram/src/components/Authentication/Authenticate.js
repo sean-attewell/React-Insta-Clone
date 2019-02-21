@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function authenticate(App, Login) {
     return class Authenticate extends React.Component {
         state = {
