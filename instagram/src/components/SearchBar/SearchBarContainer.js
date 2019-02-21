@@ -5,27 +5,36 @@ import styled from 'styled-components';
 const StyledHeader = styled.header`
     border-bottom: 1px solid #3333;
     height: 80px;
-    line-height: 70px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background: #ffffff;
 `;
 
-const StyledImageWrapper = styled.div`
-    height: 50px;
-`;
 
 const StyledLogoImage = styled.img`
-    height: 100%;
+    height: 50px;
 `;
 
 const StyledSocialWrapper = styled.div`
     display: flex;
+    align-items: center;
 `;
 
 const StyledSocial = styled.div`
     width: 80px;
     height: 80px;
+    display: flex;
+    align-items: center;
+`;
+
+
+const StyledInput = styled.input`
+    height: 25%;
+`;
+
+const StyledButton = styled.button`
+    height: 25%;
 `;
 
 const SearchBar = props => {
@@ -33,36 +42,37 @@ const SearchBar = props => {
 
     return (
         <StyledHeader>
-            <StyledImageWrapper>
-                <StyledLogoImage alt="instagram logo" src={IGLogo} />
-            </StyledImageWrapper>
-
+            <StyledLogoImage alt="instagram logo" src={IGLogo} />
+            
+            
             <form onSubmit={props.handleFilterPost}>
-                <input 
-                    onChange={props.handleSearchChange}
-                    type="text"
-                    name="search"
-                    value={props.value}
-                    placeholder="Search"
-                />
-                <input
-                    type="submit"
-                />                
+                <StyledSocialWrapper>
+                    <StyledInput 
+                        onChange={props.handleSearchChange}
+                        type="text"
+                        name="search"
+                        value={props.value}
+                        placeholder="Search"
+                    />
+                    <StyledInput
+                        type="submit"
+                    />                
+                </StyledSocialWrapper>
             </form>
 
             <div>
-                <button onClick={props.logout}>Log Out</button>
+                <StyledButton onClick={props.logout}>Log Out</StyledButton>
             </div>
 
             <StyledSocialWrapper>
                 <StyledSocial>
-                    <i className="fa fa-compass" />
+                    <i className="fa fa-compass fa-2x" />
                 </StyledSocial>
                 <StyledSocial>
-                    <i className="fa fa-heart" />
+                    <i className="fa fa-heart fa-2x" />
                 </StyledSocial>
                 <StyledSocial>
-                    <i className="fa fa-user-circle" />
+                    <i className="fa fa-user-circle fa-2x" />
                 </StyledSocial>
             </StyledSocialWrapper>
         </StyledHeader>

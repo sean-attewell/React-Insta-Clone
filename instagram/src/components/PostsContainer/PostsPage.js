@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../../App.css';
 import dummyData from '../../dummy-data';
 import PostsContainer from './PostsContainer';
 import SearchBar from '../SearchBar/SearchBarContainer';
@@ -29,7 +28,7 @@ class PostsPage extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div>
                 <SearchBar
                     value={this.state.search}
                     handleFilterPost={this.filterPost}

@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Comment from './Comment';
 import CommentInput from './CommentInput';
+import styled from 'styled-components';
+
+const CommentWrapper = styled.div`
+    padding: 1.5%;
+`;
 
 class CommentSection extends React.Component {
     constructor(props) {
@@ -28,12 +33,12 @@ class CommentSection extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="social">
-                    <i className="fa fa-heart" onClick={this.addLike} />
+            <CommentWrapper>
+                <div>
+                    <i className="fa fa-heart fa-2x" onClick={this.addLike} />
                 </div>
 
-                <div className="likes">
+                <div>
                     likes: {this.state.likes}
                 </div>
 
@@ -45,7 +50,7 @@ class CommentSection extends React.Component {
                 handleAddNewComment={this.addNewComment}
                 />
 
-            </div>
+            </CommentWrapper>
         );
     }
 }
