@@ -1,18 +1,42 @@
 import React from 'react';
-import './Posts.css';
+import styled from 'styled-components';
+import StyledUsername from '../Styles/Reusables'
+
+const PostHeaderWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 1.5%;
+    /* div:last-child {
+        margin-left: 2%;
+        font-weight: bold;
+    } */
+`;
+
+const BigStyledUsername = styled(StyledUsername)`
+    font-size: 16px;
+`
+
+const ThumbWrapper = styled.div`
+    height: 75px;
+    width: 75px;
+`;
+
+const ThumbImage = styled.img`
+    height: 100%;
+    border-radius: 50%;
+`;
 
 const PostHeader = props => {
     return (
-        <div className="post-header">
-            <div className="post-thumb-wrapper">
-                <img
+        <PostHeaderWrapper>
+            <ThumbWrapper>
+                <ThumbImage
                     alt="post header"
-                    className="post-thumb"
                     src={props.thumbnailUrl}
                 />
-            </div>
-            <div>{props.username}</div>
-        </div>
+            </ThumbWrapper>
+            <BigStyledUsername>{props.username}</BigStyledUsername>
+        </PostHeaderWrapper>
     );
 };
 

@@ -1,34 +1,43 @@
 import React from 'react';
 
+
 export default function authenticate(App, Login) {
     return class Authenticate extends React.Component {
-        // logIn = () => {
-        //     localStorage.setItem('isAuthed', 'true');
-        //     this.setState({ isAuthed: true });
-        // }
+        state = {
+            isLoggedin: false
+        }
+        
+        logIn = (userName, password) => {
+            localStorage.setItem('userName', userName);
+            localStorage.setItem('password', password);
+            this.setState({ isLoggedin: true })
+        }
 
-        // logOut = () => {
-        //     localStorage.clear('isAuthed');
-        //     this.setState({ isAuthed: false });
-        // }
+        logOut = () => {
+            localStorage.clear();
+            this.setState({ isLoggedin: false })
+        }
 
-        // componentDidMount() {
-        //     const isAuthed = !!localStorage.getItem('isAuthed');
-        //     this.setState({ isAuthed });
-        // }
+        componentDidUpdate() { // runs every time the state HERE updates
+            console.log('start of compontent did update')
+            const checkIfLoggedIn = !!localStorage.getItem('userName') && !!localStorage.getItem('password');
+            if (checkIfLoggedIn !== this.state.isLoggedin) {
+                this.setState({ isLoggedin: checkIfLoggedIn })
+            }
+        }
 
-        // componentDidUpdate() {
-        //     const isAuthed = !!localStorage.getItem('isAuthed');
-        //     if (this.state.isAuthed !== isAuthed) {
-        //         this.setState({ isAuthed });
-        //     }
-        // }
+        componentDidMount() { // runs the first time it mounts to the page. Either App or Login mounts on update.
+            console.log('start of compontent did mount')
+            const checkIfLoggedIn = !!localStorage.getItem('userName') && !!localStorage.getItem('password');
+            this.setState({ isLoggedin: checkIfLoggedIn })
+        }
 
         render() {
             if (localStorage.getItem('userName') && localStorage.getItem('password')) {
-                return <App />;
+                return <App logout={this.logOut} />;
             }
-            return <Login />;
+            return <Login login={this.logIn} />;
+
         }
     };
 }
